@@ -1,11 +1,11 @@
-###Repositório do Projeto Final de POO: Floricultura 
+<h1>Repositório do Projeto Final de POO: Floricultura </h1>
 
 
 Status: Em desenvolvimento ⚠️
 
 
 
-###Autores
+<h2>Autores</h2>
 
 | <img src="https://avatars.githubusercontent.com/u/124272180?v=4" width="115"><br><strong>Davi Crisostomo de Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/111618683?s=400&u=5e315cba13d4aae69d6fac477a474725ca7b4613&v=4" width="115"><br><strong>Gabriel Kalebe dos Santos Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/127972306?v=4" width="115"><br><strong>Gabriela Vitor Siqueira</strong> | <img src="https://avatars.githubusercontent.com/u/163136936?v=4" width="115"><br><strong>Guilherme Moreira F. Pimentel</strong> | <img src="https://avatars.githubusercontent.com/u/142953027?v=4" width="115"><br><strong>Gustavo Peres Domingues Larré</strong> |
 | :---: | :---: | :---: | :---: | :---: |
@@ -60,11 +60,11 @@ em **Java** com a biblioteca **Swing** para interface gráfica.</p>
 
 ### **Diagrama Conceitual**
 
-<p>Cliente (1) --- (N) Encomendas
-Encomenda (1) --- (N) Itens da Encomenda
-Produto (1) --- (N) Itens da Encomenda
-Encomenda (N) --- (1) Local de Entrega
-</p>
+<p>Cliente (1) --- (N) Encomendas</p>
+<p>Encomenda (1) --- (N) Itens da Encomenda</p>
+<p>Produto (1) --- (N) Itens da Encomenda</p>
+<p>Encomenda (N) --- (1) Local de Entrega</p>
+
 
 
 
