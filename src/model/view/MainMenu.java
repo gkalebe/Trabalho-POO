@@ -15,7 +15,7 @@ public class MainMenu extends JFrame {
 
         JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
 
-        // Botões do menu
+
         JButton btnClientes = new JButton("Gerenciar Clientes");
         JButton btnProdutos = new JButton("Gerenciar Produtos");
         JButton btnEncomendas = new JButton("Gerenciar Encomendas");
