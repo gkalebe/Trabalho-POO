@@ -7,28 +7,9 @@ Status: Em desenvolvimento ⚠️
 
 ###Autores
 
-<div style="display: flex; justify-content: space-around; align-items: center; text-align: center;">
-    <div>
-        <img src="https://avatars.githubusercontent.com/u/124272180?v=4" width="115">
-        <br><strong>Davi Crisostomo de Sousa</strong>
-    </div>
-    <div>
-        <img src="https://avatars.githubusercontent.com/u/111618683?s=400&u=5e315cba13d4aae69d6fac477a474725ca7b4613&v=4" width="115">
-        <br><strong>Gabriel Kalebe dos Santos Sousa</strong>
-    </div>
-    <div>
-        <img src="https://avatars.githubusercontent.com/u/127972306?v=4" width="115">
-        <br><strong>Gabriela Vitor Siqueira</strong>
-    </div>
-    <div>
-        <img src="https://avatars.githubusercontent.com/u/163136936?v=4" width="115">
-        <br><strong>Guilherme Moreira F. Pimentel</strong>
-    </div>
-    <div>
-        <img src="https://avatars.githubusercontent.com/u/142953027?v=4" width="115">
-        <br><strong>Gustavo Peres Domingues Larré</strong>
-    </div>
-</div>
+| <img src="https://avatars.githubusercontent.com/u/124272180?v=4" width="115"><br><strong>Davi Crisostomo de Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/111618683?s=400&u=5e315cba13d4aae69d6fac477a474725ca7b4613&v=4" width="115"><br><strong>Gabriel Kalebe dos Santos Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/127972306?v=4" width="115"><br><strong>Gabriela Vitor Siqueira</strong> | <img src="https://avatars.githubusercontent.com/u/163136936?v=4" width="115"><br><strong>Guilherme Moreira F. Pimentel</strong> | <img src="https://avatars.githubusercontent.com/u/142953027?v=4" width="115"><br><strong>Gustavo Peres Domingues Larré</strong> |
+| :---: | :---: | :---: | :---: | :---: |
+
 
 <div>
     <h2><strong>Objetivo do Projeto</strong></h2>
@@ -65,6 +46,11 @@ em **Java** com a biblioteca **Swing** para interface gráfica.</p>
 **Itens de Encomenda:** Produtos associados às encomendas, incluindo quantidade e preço unitário.
 
 ## **Arquitetura do Sistema**
+<p>
+    <h3>Visão Geral da Arquitetura</h3>
+    •O sistema será baseado em uma arquitetura de três camadas: apresentação, lógica de negócios e dados.
+
+</p>
 
 ### **Camadas do Sistema**
 
