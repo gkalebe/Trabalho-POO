@@ -1,10 +1,13 @@
 package view;
 
 import controller.ProdutoController;
+import view.MainMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class CadastrarProdutoView extends JFrame {
 

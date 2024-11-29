@@ -1,5 +1,7 @@
 package view;
 
+import view.MainMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

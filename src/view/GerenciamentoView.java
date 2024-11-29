@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.MainMenu;
+
 public class GerenciamentoView {
 
     public void exibirTelaGerenciamento() {

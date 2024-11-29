@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.MainMenu;
+
 public class ClienteView extends JFrame {
 
     public ClienteView() {
@@ -22,6 +24,9 @@ public class ClienteView extends JFrame {
 
         JButton botaoLogin = new JButton("Login");
         JButton botaoCadastrar = new JButton("Cadastrar");
+
+        JButton botaoVoltar = new JButton("Voltar");
+
         JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
         add(labelUsuario);
@@ -30,14 +35,15 @@ public class ClienteView extends JFrame {
         add(campoSenha);
         add(botaoLogin);
         add(botaoCadastrar);
+        add(botaoVoltar);
         add(mensagem);
 
+        // Ação do botão "Login"
         botaoLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cpf = campoUsuario.getText();
                 String senha = new String(campoSenha.getPassword());
-
 
                 if (CadastroClienteView.clientes.containsKey(cpf) && CadastroClienteView.clientes.get(cpf).getSenha().equals(senha)) {
                     mensagem.setText("Login bem-sucedido!");
@@ -49,11 +55,19 @@ public class ClienteView extends JFrame {
             }
         });
 
-
+        // Ação do botão "Cadastrar"
         botaoCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CadastroClienteView.exibirTelaDeCadastro();
+            }
+        });
+
+        botaoVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new MainMenu();
             }
         });
 
