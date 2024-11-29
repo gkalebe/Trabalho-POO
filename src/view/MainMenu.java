@@ -26,7 +26,7 @@ public class MainMenu extends JFrame {
         btnGerenciarClientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Gerenciamento().setVisible(true);
+                new LoginView().setVisible(true);
                 dispose();
             }
         });
@@ -34,7 +34,7 @@ public class MainMenu extends JFrame {
         btnClientes.addActionListener(new ActionListener(){
             @Override
                 public void actionPerformed(ActionEvent e){
-                    new ClientesMenu().setVisible(true);
+                    new ClienteView().setVisible(true);
                         dispose();
                 }
         });
@@ -44,7 +44,7 @@ public class MainMenu extends JFrame {
                 public void actionPerformed(ActionEvent e){
                     System.exit(0);
                 }
-        })
+        });
 
         panel.add(btnGerenciarClientes);
         panel.add(btnClientes);
