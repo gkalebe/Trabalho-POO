@@ -15,70 +15,67 @@ public class StatusEncomendaView extends JFrame {
 
         encomendaController = new EncomendaController();
 
-        
-            setTitle("Alterar Status da Encomenda");
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setSize(400, 300);
-            setLayout(new GridLayout(6, 2, 10, 10));
 
-                // Campos para CPF do cliente e novo status
-                JLabel labelCpf = new JLabel("CPF do Cliente:");
-                JTextField campoCpf = new JTextField();
+        setTitle("Alterar Status da Encomenda");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLayout(new GridLayout(6, 2, 10, 10));
 
-                    JLabel labelNovoStatus = new JLabel("Novo Status:");
-                    String[] statusOpcoes = {"Solicitado", "Cancelado", "Enviado", "Entregue"};
-                    JComboBox<String> comboStatus = new JComboBox<>(statusOpcoes);
+        JLabel labelCpf = new JLabel("CPF do Cliente:");
+        JTextField campoCpf = new JTextField();
 
-                        JButton botaoAlterarStatus = new JButton("Alterar Status");
-                        JButton botaoVoltar = new JButton("Voltar");
-                        JLabel mensagem = new JLabel("", SwingConstants.CENTER);
+        JLabel labelNovoStatus = new JLabel("Novo Status:");
+        String[] statusOpcoes = {"Solicitado", "Cancelado", "Enviado", "Entregue"};
+        JComboBox<String> comboStatus = new JComboBox<>(statusOpcoes);
 
-        
-                                add(labelCpf);
-                                add(campoCpf);
-                                add(labelNovoStatus);
-                                add(comboStatus);
-                                add(botaoAlterarStatus);
-                                add(mensagem);
-                                add(botaoVoltar);
+        JButton botaoAlterarStatus = new JButton("Alterar Status");
+        JButton botaoVoltar = new JButton("Voltar");
+        JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
-                
-                botaoAlterarStatus.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        String cpf = campoCpf.getText();
-                        String novoStatus = (String) comboStatus.getSelectedItem();
+        add(labelCpf);
+        add(campoCpf);
+        add(labelNovoStatus);
+        add(comboStatus);
+        add(botaoAlterarStatus);
+        add(mensagem);
+        add(botaoVoltar);
 
-                        
-                        if (cpf.isEmpty()) {
-                            mensagem.setText("CPF é obrigatório!");
-                            mensagem.setForeground(Color.RED);
-                        } else {
-                            boolean sucesso = encomendaController.alterarStatusEncomenda(cpf, novoStatus);
-                            if (sucesso) {
-                                mensagem.setText("Status da encomenda alterado com sucesso!");
-                                mensagem.setForeground(Color.GREEN);
-                            } else {
-                                mensagem.setText("Erro ao alterar status.");
-                                mensagem.setForeground(Color.RED);
-                            }
-                        }
-                    }
-                });
-
-        // Ação do botão de voltar
-        botaoVoltar.addActionListener(new ActionListener() {
+        botaoAlterarStatus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Fecha a janela de alterar status
-                new GerenciamentoView().exibirTelaGerenciamento(); // Volta para a tela de gerenciamento
+                String cpf = campoCpf.getText();
+                String novoStatus = (String) comboStatus.getSelectedItem();
+
+
+                if (cpf.isEmpty()) {
+                    mensagem.setText("CPF é obrigatório!");
+                    mensagem.setForeground(Color.RED);
+                } else {
+                    boolean sucesso = encomendaController.alterarStatusEncomenda(cpf, novoStatus);
+                    if (sucesso) {
+                        mensagem.setText("Status da encomenda alterado com sucesso!");
+                        mensagem.setForeground(Color.GREEN);
+                    } else {
+                        mensagem.setText("Erro ao alterar status.");
+                        mensagem.setForeground(Color.RED);
+                    }
+                }
             }
         });
 
-        setVisible(true);
+        botaoVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GerenciamentoView().exibirTelaGerenciamento();
+            }
+        });
+
+        setLocationRelativeTo(null); 
+        setVisible(true); 
     }
 
     public static void main(String[] args) {
-        new StatusEncomendaView(); // Criar e exibir a tela de alterar status
+        new StatusEncomendaView();
     }
 }

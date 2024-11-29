@@ -10,11 +10,11 @@ public class Encomenda {
     private int idLocal;
     private String status;
 
-    // Construtor vazio
+    
     public Encomenda() {
     }
 
-    // Construtor com parâmetros
+  
     public Encomenda(int idEncomenda, int idCliente, Date dataEncomenda, Date dataEntrega, int idLocal, String status) {
         this.idEncomenda = idEncomenda;
         this.idCliente = idCliente;
@@ -24,7 +24,7 @@ public class Encomenda {
         this.status = status;
     }
 
-    // Getters e Setters
+    
     public int getIdEncomenda() {
         return idEncomenda;
     }
