@@ -16,15 +16,12 @@ public class MainMenu extends JFrame {
         JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
 
 
-        JButton btnClientes = new JButton("Gerenciar Clientes");
-        JButton btnProdutos = new JButton("Gerenciar Produtos");
-        JButton btnEncomendas = new JButton("Gerenciar Encomendas");
-        JButton btnLocaisEntrega = new JButton("Gerenciar Locais de Entrega");
+        JButton btnGerenciarClientes = new JButton("Gerenciamento");
+        JButton btnClientes = new JButton("Clientes");
 
+        panel.add(btnGerenciarClientes);
         panel.add(btnClientes);
-        panel.add(btnProdutos);
-        panel.add(btnEncomendas);
-        panel.add(btnLocaisEntrega);
+       
 
 
         add(panel);
