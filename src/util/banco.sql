@@ -24,7 +24,7 @@ CREATE TABLE encomenda (
                            data_encomenda DATE NOT NULL,
                            data_entrega DATE,
                            id_local INT NOT NULL,
-                           status VARCHAR(50) DEFAULT 'Pendente',
+                           status VARCHAR(50) DEFAULT 'Pendente'
                            FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
                            FOREIGN KEY (id_local) REFERENCES local_entrega(id_local)
 );
