@@ -8,7 +8,7 @@ public class ProdutoController {
     private ProdutoDAO produtoDAO;
 
         public ProdutoController(){
-            produtoDAO = new Produto();
+            produtoDAO = new ProdutoDAO();
         }
 
                 public boolean  cadastrarProduto(String nome, String tipo, double preco){
