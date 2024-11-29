@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class ClienteView {
     public static void main(String[] args) {
 
-        Cliente cliente = new CadastroClienteView.Cliente("Cliente Teste", "cli", "123", "", "", "", "", "");
+        Cliente cliente = new CadastroClienteView.Cliente("Cliente Teste", "", "123", "", "", "", "", "");
         CadastroClienteView.clientes.put("cli", cliente);
         
         JFrame frame = new JFrame("Sistema de Login Cliente");
@@ -19,7 +19,7 @@ public class ClienteView {
         frame.setSize(300, 200);
         frame.setLayout(new GridLayout(4, 2));
 
-        // Campos para o CPF (usuário) e senha
+        
         JLabel labelUsuario = new JLabel("Usuário:");
         JTextField campoUsuario = new JTextField();
 
