@@ -7,15 +7,18 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class CadastroClienteView {
-   
+
     public static HashMap<String, Cliente> clientes = new HashMap<>();
 
     public static void exibirTelaDeCadastro() {
         JFrame cadastroFrame = new JFrame("Cadastro de Cliente");
         cadastroFrame.setSize(400, 400);
-        cadastroFrame.setLayout(new GridLayout(10, 2));
+        cadastroFrame.setLayout(new GridLayout(10, 2, 10, 10)); // Ajustado para um layout mais espaçado
 
-        
+        // Labels e campos
+        JLabel labelNome = new JLabel("Nome:");
+        JTextField campoNome = new JTextField();
+
         JLabel labelCPF = new JLabel("CPF:");
         JTextField campoCPF = new JTextField();
 
@@ -42,6 +45,9 @@ public class CadastroClienteView {
         JButton botaoVoltar = new JButton("Voltar");
         JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
+        // Adicionando componentes no frame
+        cadastroFrame.add(labelNome);
+        cadastroFrame.add(campoNome);
         cadastroFrame.add(labelCPF);
         cadastroFrame.add(campoCPF);
         cadastroFrame.add(labelSenha);
@@ -61,10 +67,11 @@ public class CadastroClienteView {
         cadastroFrame.add(botaoVoltar);
         cadastroFrame.add(mensagem);
 
-       
+        
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nome = campoNome.getText();
                 String cpf = campoCPF.getText();
                 String senha = new String(campoSenha.getPassword());
                 String cep = campoCEP.getText();
@@ -73,11 +80,11 @@ public class CadastroClienteView {
                 String telefone = campoTelefone.getText();
                 String email = campoEmail.getText();
 
-                if (cpf.isEmpty() || senha.isEmpty()) {
-                    mensagem.setText("CPF e senha são obrigatórios!");
+                if (cpf.isEmpty() || senha.isEmpty() || nome.isEmpty()) {
+                    mensagem.setText("Nome, CPF e senha são obrigatórios!");
                     mensagem.setForeground(Color.RED);
                 } else {
-                    Cliente cliente = new Cliente(cpf, senha, cep, cidade, estado, telefone, email);
+                    Cliente cliente = new Cliente(nome, cpf, senha, cep, cidade, estado, telefone, email);
                     clientes.put(cpf, cliente);
                     mensagem.setText("Cliente salvo/atualizado com sucesso!");
                     mensagem.setForeground(Color.GREEN);
@@ -110,11 +117,14 @@ public class CadastroClienteView {
             }
         });
 
+       
         cadastroFrame.setVisible(true);
+        cadastroFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     
     static class Cliente {
+        private String nome;
         private String cpf;
         private String senha;
         private String cep;
@@ -123,7 +133,8 @@ public class CadastroClienteView {
         private String telefone;
         private String email;
 
-        public Cliente(String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
+        public Cliente(String nome, String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
+            this.nome = nome;
             this.cpf = cpf;
             this.senha = senha;
             this.cep = cep;
@@ -131,6 +142,10 @@ public class CadastroClienteView {
             this.estado = estado;
             this.telefone = telefone;
             this.email = email;
+        }
+
+        public String getNome() {
+            return nome;
         }
 
         public String getCpf() {
@@ -160,5 +175,10 @@ public class CadastroClienteView {
         public String getEmail() {
             return email;
         }
+    }
+
+    public static void main(String[] args) {
+        // Chama a função de exibição da tela de cadastro ao iniciar o programa
+        exibirTelaDeCadastro();
     }
 }
