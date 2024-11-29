@@ -3,6 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainMenu extends JFrame {
 
@@ -18,9 +19,36 @@ public class MainMenu extends JFrame {
 
         JButton btnGerenciarClientes = new JButton("Gerenciamento");
         JButton btnClientes = new JButton("Clientes");
+        JButton btnEncerrarPrograma = new JButton("Encerrar Programa");
+
+
+        
+        btnGerenciarClientes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Gerenciamento().setVisible(true);
+                dispose();
+            }
+        });
+
+        btnClientes.addActionListener(new ActionListener(){
+            @Override
+                public void actionPerformed(ActionEvent e){
+                    new ClientesMenu().setVisible(true);
+                        dispose();
+                }
+        });
+
+        btnEncerrarPrograma.addActionListener(new ActionListener(){
+            @Override
+                public void actionPerformed(ActionEvent e){
+                    System.exit(0);
+                }
+        })
 
         panel.add(btnGerenciarClientes);
         panel.add(btnClientes);
+        panel.add(btnEncerrarPrograma);
        
 
 
