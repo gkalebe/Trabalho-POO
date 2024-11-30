@@ -1,7 +1,7 @@
 package controller;
 
 import dao.ClienteDAO;
-import model.model.Cliente;
+import model.Cliente;
 
 public class ClienteController {
 

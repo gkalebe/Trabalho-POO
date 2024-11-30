@@ -1,7 +1,7 @@
 package dao;
 
-import model.model.Cliente;
-import model.model.Cliente;
+import model.Cliente;
+import model.Cliente;
 import util.Banco;
 
 import java.sql.Connection;

@@ -1,7 +1,7 @@
 package util;
 
 import dao.ClienteDAO;
-import model.model.Cliente;
+import model.Cliente;
 
 import java.sql.*;
 import java.util.ArrayList;

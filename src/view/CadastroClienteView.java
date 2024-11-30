@@ -1,7 +1,7 @@
 package view;
 
 import dao.ClienteDAO;
-import model.model.Cliente;
+import model.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
