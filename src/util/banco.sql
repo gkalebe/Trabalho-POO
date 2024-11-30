@@ -19,21 +19,22 @@ CREATE TABLE local_entrega (
 
 
 CREATE TABLE encomenda (
-                           id_encomenda INT PRIMARY KEY AUTO_INCREMENT,
-                           id_cliente INT NOT NULL,
-                           data_encomenda DATE NOT NULL,
-                           data_entrega DATE,
-                           id_local INT NOT NULL,
-                           status VARCHAR(50) DEFAULT 'Pendente'
-                           FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-                           FOREIGN KEY (id_local) REFERENCES local_entrega(id_local)
+                        id_encomenda INT PRIMARY KEY AUTO_INCREMENT,
+                        id_cliente INT NOT NULL,
+                        data_encomenda DATE NOT NULL,
+                        data_entrega DATE,
+                        id_local INT NOT NULL,
+                        status ENUM('Solicitado', 'Cancelado', 'Enviado', 'Entregue') DEFAULT 'Solicitado',
+                        FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+                        FOREIGN KEY (id_local) REFERENCES local_entrega(id_local)
 );
 
 CREATE TABLE produto (
                          id_produto INT PRIMARY KEY AUTO_INCREMENT,
                          nome VARCHAR(100) NOT NULL,
                          tipo VARCHAR(50),
-                         preco DECIMAL(10, 2) NOT NULL
+                         preco DECIMAL(10, 2) NOT NULL,
+                         quantidade INT NOT NULL
 );
 
 

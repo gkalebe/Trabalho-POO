@@ -1,13 +1,11 @@
 package view;
 
 import controller.ProdutoController;
-import view.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 public class CadastrarProdutoView extends JFrame {
 
@@ -16,13 +14,11 @@ public class CadastrarProdutoView extends JFrame {
     public CadastrarProdutoView() {
         produtoController = new ProdutoController();
 
-        
         setTitle("Cadastrar Produto");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
-        setLayout(new GridLayout(5, 2, 10, 10));
+        setLayout(new GridLayout(6, 2, 10, 10)); 
 
-        
         JLabel labelNome = new JLabel("Nome do Produto:");
         JTextField campoNome = new JTextField();
 
@@ -32,37 +28,41 @@ public class CadastrarProdutoView extends JFrame {
         JLabel labelPreco = new JLabel("Preço:");
         JTextField campoPreco = new JTextField();
 
+        JLabel labelQuantidade = new JLabel("Quantidade:");
+        JTextField campoQuantidade = new JTextField();
+
         JButton botaoSalvar = new JButton("Salvar");
         JButton botaoVoltar = new JButton("Voltar");
         JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
-        
         add(labelNome);
         add(campoNome);
         add(labelTipo);
         add(campoTipo);
         add(labelPreco);
         add(campoPreco);
+        add(labelQuantidade);
+        add(campoQuantidade); 
         add(botaoSalvar);
         add(mensagem);
         add(botaoVoltar);
 
-        
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = campoNome.getText();
                 String tipo = campoTipo.getText();
                 String precoText = campoPreco.getText();
+                String quantidadeText = campoQuantidade.getText();
 
-                
-                if (nome.isEmpty() || precoText.isEmpty()) {
+                if (nome.isEmpty() || precoText.isEmpty() || quantidadeText.isEmpty()) {
                     mensagem.setText("Preencha todos os campos!");
                     mensagem.setForeground(Color.RED);
                 } else {
                     try {
                         double preco = Double.parseDouble(precoText);
-                        boolean sucesso = produtoController.cadastrarProduto(nome, tipo, preco);
+                        int quantidade = Integer.parseInt(quantidadeText); 
+                        boolean sucesso = produtoController.cadastrarProduto(nome, tipo, preco, quantidade);
                         if (sucesso) {
                             mensagem.setText("Produto cadastrado com sucesso!");
                             mensagem.setForeground(Color.GREEN);
@@ -71,13 +71,12 @@ public class CadastrarProdutoView extends JFrame {
                             mensagem.setForeground(Color.RED);
                         }
                     } catch (NumberFormatException ex) {
-                        mensagem.setText("Preço inválido.");
+                        mensagem.setText("Preço ou quantidade inválidos.");
                         mensagem.setForeground(Color.RED);
                     }
                 }
             }
         });
-
 
         botaoVoltar.addActionListener(new ActionListener() {
             @Override

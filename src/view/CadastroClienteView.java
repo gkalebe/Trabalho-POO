@@ -1,6 +1,6 @@
 package view;
 
-import view.MainMenu;
+import model.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,15 +9,14 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 public class CadastroClienteView {
-   
+
     public static HashMap<String, Cliente> clientes = new HashMap<>();
 
     public static void exibirTelaDeCadastro() {
         JFrame cadastroFrame = new JFrame("Cadastro de Cliente");
         cadastroFrame.setSize(400, 400);
-        cadastroFrame.setLayout(new GridLayout(10, 2));
+        cadastroFrame.setLayout(new GridLayout(9, 2, 10, 10));
 
-        
         JLabel labelCPF = new JLabel("CPF:");
         JTextField campoCPF = new JTextField();
 
@@ -39,8 +38,7 @@ public class CadastroClienteView {
         JLabel labelEmail = new JLabel("Email:");
         JTextField campoEmail = new JTextField();
 
-        JButton botaoSalvar = new JButton("Salvar/Atualizar");
-        JButton botaoExcluir = new JButton("Excluir");
+        JButton botaoSalvar = new JButton("Salvar");
         JButton botaoVoltar = new JButton("Voltar");
         JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
@@ -58,12 +56,13 @@ public class CadastroClienteView {
         cadastroFrame.add(campoTelefone);
         cadastroFrame.add(labelEmail);
         cadastroFrame.add(campoEmail);
-        cadastroFrame.add(botaoSalvar);
-        cadastroFrame.add(botaoExcluir);
-        cadastroFrame.add(botaoVoltar);
+
+        JPanel painelBotoes = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+        painelBotoes.add(botaoSalvar);
+        painelBotoes.add(botaoVoltar);
+        cadastroFrame.add(painelBotoes);
         cadastroFrame.add(mensagem);
 
-       
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,92 +74,25 @@ public class CadastroClienteView {
                 String telefone = campoTelefone.getText();
                 String email = campoEmail.getText();
 
-                if (cpf.isEmpty() || senha.isEmpty()) {
-                    mensagem.setText("CPF e senha são obrigatórios!");
+                if (cpf.isEmpty() || senha.isEmpty() || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty()) {
+                    mensagem.setText("Preencha todos os campos obrigatórios!");
                     mensagem.setForeground(Color.RED);
                 } else {
                     Cliente cliente = new Cliente(cpf, senha, cep, cidade, estado, telefone, email);
                     clientes.put(cpf, cliente);
-                    mensagem.setText("Cliente salvo/atualizado com sucesso!");
+                    mensagem.setText("Cliente cadastrado com sucesso!");
                     mensagem.setForeground(Color.GREEN);
                 }
             }
         });
 
-       
-        botaoExcluir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cpf = campoCPF.getText();
-
-                if (clientes.containsKey(cpf)) {
-                    clientes.remove(cpf);
-                    mensagem.setText("Cliente excluído com sucesso!");
-                    mensagem.setForeground(Color.GREEN);
-                } else {
-                    mensagem.setText("Cliente não encontrado!");
-                    mensagem.setForeground(Color.RED);
-                }
-            }
-        });
-
-        
         botaoVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cadastroFrame.dispose(); 
+                cadastroFrame.dispose();
             }
         });
 
         cadastroFrame.setVisible(true);
-    }
-
-    
-    static class Cliente {
-        private String cpf;
-        private String senha;
-        private String cep;
-        private String cidade;
-        private String estado;
-        private String telefone;
-        private String email;
-
-        public Cliente(String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
-            this.cpf = cpf;
-            this.senha = senha;
-            this.cep = cep;
-            this.cidade = cidade;
-            this.estado = estado;
-            this.telefone = telefone;
-            this.email = email;
-        }
-
-        public String getCpf() {
-            return cpf;
-        }
-
-        public String getSenha() {
-            return senha;
-        }
-
-        public String getCep() {
-            return cep;
-        }
-
-        public String getCidade() {
-            return cidade;
-        }
-
-        public String getEstado() {
-            return estado;
-        }
-
-        public String getTelefone() {
-            return telefone;
-        }
-
-        public String getEmail() {
-            return email;
-        }
     }
 }

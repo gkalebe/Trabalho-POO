@@ -1,20 +1,20 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Encomenda {
+
     private int idEncomenda;
     private int idCliente;
     private Date dataEncomenda;
     private Date dataEntrega;
     private int idLocal;
     private String status;
+    private List<Produto> produtos;
 
-    
-    public Encomenda() {
-    }
+    public Encomenda() {}
 
-  
     public Encomenda(int idEncomenda, int idCliente, Date dataEncomenda, Date dataEntrega, int idLocal, String status) {
         this.idEncomenda = idEncomenda;
         this.idCliente = idCliente;
@@ -24,7 +24,6 @@ public class Encomenda {
         this.status = status;
     }
 
-    
     public int getIdEncomenda() {
         return idEncomenda;
     }
@@ -71,5 +70,13 @@ public class Encomenda {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }
