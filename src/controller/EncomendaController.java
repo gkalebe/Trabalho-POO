@@ -21,7 +21,7 @@ public class EncomendaController {
         encomenda.setDataEncomenda(new java.util.Date());
         encomenda.setDataEntrega(null); 
         encomenda.setIdLocal(idLocal);
-        encomenda.setStatus("Pendente");
+        encomenda.setStatus("Solicitado");
         encomenda.setProdutos(produtos);
 
         return encomendaDAO.salvarEncomenda(encomenda);

@@ -10,12 +10,13 @@ public class Cliente {
     private String telefone;
     private String email;
 
-    
-    public Cliente() {}
 
-    
-    public Cliente(String nome ,String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
-        this.nome = cpf;
+    public Cliente() {
+    }
+
+
+    public Cliente( String nome, String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
+        this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
         this.cep = cep;
@@ -25,7 +26,7 @@ public class Cliente {
         this.email = email;
     }
 
-    
+
     public String getCpf() {
         return cpf;
     }
@@ -93,7 +94,7 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "nome='" + nome + '\'' +
+                ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", senha='" + senha + '\'' +
                 ", cep='" + cep + '\'' +
@@ -103,4 +104,7 @@ public class Cliente {
                 ", email='" + email + '\'' +
                 '}';
     }
+
 }
+
+

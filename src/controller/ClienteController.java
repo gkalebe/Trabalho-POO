@@ -40,4 +40,8 @@ public class ClienteController {
         }
         return sucesso;
     }
+
+    public Integer buscarIdPorCPF(String cpf) {
+        return  clienteDAO.buscarIdPorCPF(cpf);
+    }
 }

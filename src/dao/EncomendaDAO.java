@@ -17,9 +17,14 @@ public class EncomendaDAO {
 
             stmt.setInt(1, encomenda.getIdCliente());
             stmt.setDate(2, new java.sql.Date(encomenda.getDataEncomenda().getTime()));
-            stmt.setDate(3, null); 
+            stmt.setDate(3, null); // Data de entrega pode ser preenchida posteriormente
             stmt.setInt(4, encomenda.getIdLocal());
-            stmt.setString(5, encomenda.getStatus());
+
+            String status = encomenda.getStatus();
+            if (status == null || status.trim().isEmpty()) {
+                status = "Solicitado";
+            }
+            stmt.setString(5, status);
 
             return stmt.executeUpdate() > 0;
 
@@ -28,6 +33,7 @@ public class EncomendaDAO {
             return false;
         }
     }
+
 
     public boolean atualizarStatusEncomenda(String cpf, String novoStatus) {
         String sqlBuscaCliente = "SELECT id_cliente FROM cliente WHERE cpf = ?";

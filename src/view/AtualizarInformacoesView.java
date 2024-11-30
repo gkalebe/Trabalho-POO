@@ -23,11 +23,11 @@ public class AtualizarInformacoesView extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(9, 2, 10, 10));
 
-        JLabel labelNome = new JLabel("Nome:");
-        campoNome = new JTextField(15);
-
         JLabel labelCpf = new JLabel("CPF:");
         campoCpf = new JTextField(15);
+
+        JLabel labelNome = new JLabel("Nome:");
+        campoNome = new JTextField(15);
 
         JButton botaoBuscar = new JButton("Buscar");
         estilizarBotao(botaoBuscar);
@@ -116,14 +116,18 @@ public class AtualizarInformacoesView extends JFrame {
 
     private void buscarCliente() {
         String cpf = campoCpf.getText();
+        System.out.println("Iniciando busca por CPF: " + cpf);
+
         if (cpf.isEmpty()) {
             mensagem.setText("Digite o CPF para buscar.");
             mensagem.setForeground(Color.RED);
+            System.err.println("Erro: Campo CPF vazio.");
             return;
         }
 
         Cliente cliente = clienteController.buscarClientePorCPF(cpf);
         if (cliente != null) {
+            System.out.println("Cliente encontrado: " + cliente.getNome());
             campoCep.setText(cliente.getCep());
             campoNome.setText(cliente.getNome());
             campoCidade.setText(cliente.getCidade());
@@ -135,8 +139,10 @@ public class AtualizarInformacoesView extends JFrame {
         } else {
             mensagem.setText("Cliente não encontrado.");
             mensagem.setForeground(Color.RED);
+            System.err.println("Cliente não encontrado para CPF: " + cpf);
         }
     }
+
 
     private void salvarAlteracoes() {
         String nome = campoNome.getText();
