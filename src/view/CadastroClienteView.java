@@ -1,21 +1,22 @@
 package view;
 
+import dao.ClienteDAO;
 import model.model.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 public class CadastroClienteView {
 
-    public static HashMap<String, Cliente> clientes = new HashMap<>();
-
     public static void exibirTelaDeCadastro() {
         JFrame cadastroFrame = new JFrame("Cadastro de Cliente");
-        cadastroFrame.setSize(400, 400);
-        cadastroFrame.setLayout(new GridLayout(9, 2, 10, 10));
+        cadastroFrame.setSize(400, 450);
+        cadastroFrame.setLayout(new GridLayout(10, 2, 10, 10));
+
+        JLabel labelNome = new JLabel("Nome:");
+        JTextField campoNome = new JTextField();
 
         JLabel labelCPF = new JLabel("CPF:");
         JTextField campoCPF = new JTextField();
@@ -42,6 +43,8 @@ public class CadastroClienteView {
         JButton botaoVoltar = new JButton("Voltar");
         JLabel mensagem = new JLabel("", SwingConstants.CENTER);
 
+        cadastroFrame.add(labelNome);
+        cadastroFrame.add(campoNome);
         cadastroFrame.add(labelCPF);
         cadastroFrame.add(campoCPF);
         cadastroFrame.add(labelSenha);
@@ -66,6 +69,7 @@ public class CadastroClienteView {
         botaoSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String nome = campoNome.getText();
                 String cpf = campoCPF.getText();
                 String senha = new String(campoSenha.getPassword());
                 String cep = campoCEP.getText();
@@ -74,14 +78,27 @@ public class CadastroClienteView {
                 String telefone = campoTelefone.getText();
                 String email = campoEmail.getText();
 
-                if (cpf.isEmpty() || senha.isEmpty() || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty()) {
+                // Logs para depuração
+                System.out.println("Tentativa de cadastro do cliente com CPF: " + cpf);
+
+                if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty() || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty()) {
                     mensagem.setText("Preencha todos os campos obrigatórios!");
                     mensagem.setForeground(Color.RED);
+                    System.err.println("Falha no cadastro: Campos obrigatórios não preenchidos.");
                 } else {
-                    Cliente cliente = new Cliente(cpf, senha, cep, cidade, estado, telefone, email);
-                    clientes.put(cpf, cliente);
-                    mensagem.setText("Cliente cadastrado com sucesso!");
-                    mensagem.setForeground(Color.GREEN);
+                    Cliente cliente = new Cliente(nome, cpf, senha, cep, cidade, estado, telefone, email);
+
+                    // Salvando no banco de dados
+                    ClienteDAO clienteDAO = new ClienteDAO();
+                    if (clienteDAO.salvar(cliente)) {
+                        mensagem.setText("Cliente cadastrado com sucesso!");
+                        mensagem.setForeground(Color.GREEN);
+                        System.out.println("Cliente cadastrado com sucesso no banco de dados.");
+                    } else {
+                        mensagem.setText("Erro ao cadastrar o cliente.");
+                        mensagem.setForeground(Color.RED);
+                        System.err.println("Erro ao salvar cliente no banco de dados.");
+                    }
                 }
             }
         });

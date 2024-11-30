@@ -1,6 +1,7 @@
 package model.model;
 
 public class Cliente {
+    private String nome;
     private String cpf;
     private String senha;
     private String cep;
@@ -13,7 +14,8 @@ public class Cliente {
     public Cliente() {}
 
     
-    public Cliente(String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
+    public Cliente(String nome ,String cpf, String senha, String cep, String cidade, String estado, String telefone, String email) {
+        this.nome = cpf;
         this.cpf = cpf;
         this.senha = senha;
         this.cep = cep;
@@ -52,6 +54,14 @@ public class Cliente {
         return cidade;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
@@ -80,11 +90,11 @@ public class Cliente {
         this.email = email;
     }
 
-    
     @Override
     public String toString() {
         return "Cliente{" +
-                "cpf='" + cpf + '\'' +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
                 ", senha='" + senha + '\'' +
                 ", cep='" + cep + '\'' +
                 ", cidade='" + cidade + '\'' +

@@ -48,6 +48,7 @@ public class ClienteDAO {
             if (rs.next()) {
                 System.out.println("Cliente encontrado para CPF: " + cpf);
                 return new Cliente(
+                        rs.getString("nome"),
                         rs.getString("cpf"),
                         rs.getString("senha"),
                         rs.getString("cep"),
@@ -74,13 +75,14 @@ public class ClienteDAO {
         try (Connection conexao = Banco.getConexao();
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-            stmt.setString(1, cliente.getSenha());
-            stmt.setString(2, cliente.getCep());
-            stmt.setString(3, cliente.getCidade());
-            stmt.setString(4, cliente.getEstado());
-            stmt.setString(5, cliente.getTelefone());
-            stmt.setString(6, cliente.getEmail());
-            stmt.setString(7, cliente.getCpf());
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getSenha());
+            stmt.setString(3, cliente.getCep());
+            stmt.setString(4, cliente.getCidade());
+            stmt.setString(5, cliente.getEstado());
+            stmt.setString(6, cliente.getTelefone());
+            stmt.setString(7, cliente.getEmail());
+            stmt.setString(8, cliente.getCpf());
 
             return stmt.executeUpdate() > 0;
 
@@ -91,7 +93,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> listarTodos() {
-        String sql = "SELECT cpf, senha, cep, cidade, estado, telefone, email FROM cliente";
+        String sql = "SELECT nome , cpf, senha, cep, cidade, estado, telefone, email FROM cliente";
         List<Cliente> clientes = new ArrayList<>();
 
         try (Connection conexao = Banco.getConexao();
@@ -100,6 +102,7 @@ public class ClienteDAO {
 
             while (rs.next()) {
                 Cliente cliente = new Cliente(
+                        rs.getString("nome"),
                         rs.getString("cpf"),
                         rs.getString("senha"),
                         rs.getString("cep"),

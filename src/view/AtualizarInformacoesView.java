@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class AtualizarInformacoesView extends JFrame {
 
     private ClienteController clienteController;
-    private JTextField campoCpf, campoCep, campoCidade, campoEstado, campoTelefone, campoEmail;
+    private JTextField campoNome, campoCpf, campoCep, campoCidade, campoEstado, campoTelefone, campoEmail;
     private JLabel mensagem;
 
     public AtualizarInformacoesView() {
@@ -19,9 +19,12 @@ public class AtualizarInformacoesView extends JFrame {
 
         setTitle("Atualizar Informações");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 550);
+        setSize(500, 600);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(8, 2, 10, 10));
+        setLayout(new GridLayout(9, 2, 10, 10));
+
+        JLabel labelNome = new JLabel("Nome:");
+        campoNome = new JTextField(15);
 
         JLabel labelCpf = new JLabel("CPF:");
         campoCpf = new JTextField(15);
@@ -59,10 +62,13 @@ public class AtualizarInformacoesView extends JFrame {
         estilizarBotao(botaoCancelar);
         estilizarBotao(botaoVoltar);
 
+
         add(labelCpf);
         add(campoCpf);
         add(new JLabel());
         add(botaoBuscar);
+        add(labelNome);
+        add(campoNome);
         add(labelCep);
         add(campoCep);
         add(labelCidade);
@@ -119,6 +125,7 @@ public class AtualizarInformacoesView extends JFrame {
         Cliente cliente = clienteController.buscarClientePorCPF(cpf);
         if (cliente != null) {
             campoCep.setText(cliente.getCep());
+            campoNome.setText(cliente.getNome());
             campoCidade.setText(cliente.getCidade());
             campoEstado.setText(cliente.getEstado());
             campoTelefone.setText(cliente.getTelefone());
@@ -132,6 +139,7 @@ public class AtualizarInformacoesView extends JFrame {
     }
 
     private void salvarAlteracoes() {
+        String nome = campoNome.getText();
         String cpf = campoCpf.getText();
         String cep = campoCep.getText();
         String cidade = campoCidade.getText();
@@ -139,13 +147,13 @@ public class AtualizarInformacoesView extends JFrame {
         String telefone = campoTelefone.getText();
         String email = campoEmail.getText();
 
-        if (cpf.isEmpty() || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || telefone.isEmpty() || email.isEmpty()) {
+        if (nome.isEmpty() || cpf.isEmpty() || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || telefone.isEmpty() || email.isEmpty()) {
             mensagem.setText("Preencha todos os campos.");
             mensagem.setForeground(Color.RED);
             return;
         }
 
-        Cliente cliente = new Cliente(cpf, null, cep, cidade, estado, telefone, email);
+        Cliente cliente = new Cliente(nome, cpf, null, cep, cidade, estado, telefone, email);
         boolean sucesso = clienteController.atualizarCliente(cliente);
 
         if (sucesso) {
@@ -158,6 +166,8 @@ public class AtualizarInformacoesView extends JFrame {
     }
 
     private void limparCampos() {
+        campoNome.setText("");
+        campoCpf.setText("");
         campoCep.setText("");
         campoCidade.setText("");
         campoEstado.setText("");
