@@ -1,5 +1,8 @@
 package view;
 
+import dao.ClienteDAO;
+import model.model.Cliente;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,15 +40,21 @@ public class ClienteView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String cpf = campoUsuario.getText();
                 String senha = new String(campoSenha.getPassword());
+                ClienteDAO clienteDAO = new ClienteDAO();
 
-                if (CadastroClienteView.clientes.containsKey(cpf) && CadastroClienteView.clientes.get(cpf).getSenha().equals(senha)) {
+                System.out.println("Tentando login para CPF: " + cpf);
+
+                Cliente cliente = clienteDAO.buscarPorCPF(cpf);
+                if (cliente != null && cliente.getSenha().equals(senha)) {
                     mensagem.setText("Login bem-sucedido!");
                     mensagem.setForeground(Color.GREEN);
+                    System.out.println("Login bem-sucedido para CPF: " + cpf);
                     dispose();
                     new MenuView();
                 } else {
                     mensagem.setText("Usuário ou senha inválidos.");
                     mensagem.setForeground(Color.RED);
+                    System.err.println("Login falhou para CPF: " + cpf);
                 }
             }
         });

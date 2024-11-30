@@ -1,7 +1,7 @@
 package view;
 
 import controller.ClienteController;
-import model.Cliente;
+import model.model.Cliente;
 
 import javax.swing.*;
 import java.awt.*;

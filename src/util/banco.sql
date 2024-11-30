@@ -1,6 +1,7 @@
 CREATE TABLE cliente (
                          id_cliente INT PRIMARY KEY AUTO_INCREMENT,
                          nome VARCHAR(100) NOT NULL,
+                        senha VARCHAR(25) NOT NULL
                          cpf varchar(25) UNIQUE NOT NULL,
                          cep VARCHAR(25) NOT NULL,
                          cidade VARCHAR(50) NOT NULL,
