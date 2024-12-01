@@ -14,7 +14,7 @@ Status: Em desenvolvimento ⚠️
 <div>
     <h2><strong>Objetivo do Projeto</strong></h2>
     <p>
-        Este projeto consiste em desenvolver um software para a floricultura Flores Belas, 
+        Este projeto consiste em desenvolver um software para a floricultura Flores, 
         otimizando processos como gerenciamento de clientes, encomendas, locais de entrega e produtos. 
         A solução visa atender especialmente demandas sazonais por meio de uma aplicação desenvolvida exclusivamente 
         em <strong>Java</strong> com a biblioteca <strong>Swing</strong> para interface gráfica.
