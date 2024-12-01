@@ -10,19 +10,9 @@ Status: Em desenvolvimento ⚠️
 | <img src="https://avatars.githubusercontent.com/u/124272180?v=4" width="115"><br><strong>Davi Crisostomo de Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/111618683?s=400&u=5e315cba13d4aae69d6fac477a474725ca7b4613&v=4" width="115"><br><strong>Gabriel Kalebe dos Santos Sousa</strong> | <img src="https://avatars.githubusercontent.com/u/127972306?v=4" width="115"><br><strong>Gabriela Vitor Siqueira</strong> | <img src="https://avatars.githubusercontent.com/u/163136936?v=4" width="115"><br><strong>Guilherme Moreira F. Pimentel</strong> | <img src="https://avatars.githubusercontent.com/u/142953027?v=4" width="115"><br><strong>Gustavo Peres Domingues Larré</strong> |
 | :---: | :---: | :---: | :---: | :---: |
 
-
-<div>
-    <h2><strong>Objetivo do Projeto</strong></h2>
-    <p>
-        Este projeto consiste em desenvolver um software para a floricultura Flores, 
-        otimizando processos como gerenciamento de clientes, encomendas, locais de entrega e produtos. 
-        A solução visa atender especialmente demandas sazonais por meio de uma aplicação desenvolvida exclusivamente 
-        em <strong>Java</strong> com a biblioteca <strong>Swing</strong> para interface gráfica.
-    </p>
-
    ## **Objetivo do Projeto**
 
-<p>Este projeto consiste em desenvolver um software para a floricultura Flores Belas,  
+<p>Este projeto consiste em desenvolver um software para a floricultura Flores,  
 otimizando processos como gerenciamento de clientes, encomendas, locais de entrega e produtos.  
 A solução visa atender especialmente demandas sazonais por meio de uma aplicação desenvolvida exclusivamente  
 em **Java** com a biblioteca **Swing** para interface gráfica.</p>
